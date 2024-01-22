@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BTL_WEB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,12 @@ namespace BTL_WEB.Controllers
 {
     public class DetailController : Controller
     {
+        BANDONGHOEntities db = new BANDONGHOEntities();
         // GET: Detail
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            SANPHAM ketQua = db.SANPHAMs.Find(id);
+            return View(ketQua);
         }
     }
 }

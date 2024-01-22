@@ -1,0 +1,96 @@
+﻿@model IEnumerable<BTL_WEB.Models.CHITIETDONHANG>
+@{ 
+    double TongTien = 0;
+}
+<!-- Cart Page Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="table-responsive">
+                <table class="table" id="tableSanPham">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản Phẩm</th>
+                            <th scope="col">Tên Sản Phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số Lượng</th>
+                            <th scope="col">Tổng Tiền</th>
+                            <th scope="col">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var sanPham = new BTL_WEB.Models.mapSanPham().ChiTiet(item.MASP);
+                            TongTien += item.SOLUONG * sanPham.DONGIA??0;
+                            <tr class="row_@item.MASP">
+                                <th scope="row">
+                                    <div class="d-flex align-items-center">
+                                        <img src="~/Public/img/@sanPham.HINHLON" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                    </div>
+                                </th>
+                                <td>
+                                    <p class="mb-0 mt-4">@sanPham.TENSP</p>
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">@string.Format("{0:#,0}", @sanPham.DONGIA)</p>
+                                </td>
+                                <td>
+                                    <div class="input-group quantity mt-4" style="width: 100px;">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" onclick="CartClass.DecreaseQuantity(@item.MASP)">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm text-center border-0" value="@(item.SOLUONG)" onchange="CartClass.ChangeQuality(@item.MASP, $(this).val())">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="CartClass.IncreaseQuantity(@item.MASP)">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">@string.Format("{0:#,0}",item.SOLUONG * sanPham.DONGIA)</p>
+                                </td>
+                                <td>
+                                    <button class="btn btn-md rounded-circle bg-light border mt-4" onclick="CartClass.Remove(@item.MASP)">
+                                        <i class="fa fa-times text-danger"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="row g-4 justify-content-end mt-3">
+                <div class="col-8"></div>
+                <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                    <div class="bg-light rounded">
+                        <div class="p-4">
+                            <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+                            <div class="d-flex justify-content-between mb-4">
+                                <h5 class="mb-0 me-4">Tổng Tiền:</h5>
+                                <p class="mb-0">@string.Format("{0:#,0}", TongTien)</p>
+                            </div>
+                            @*<div class="d-flex justify-content-between">
+                                <h5 class="mb-0 me-4">Shipping</h5>
+                                <div class="">
+                                    <p class="mb-0">Flat rate: $3.00</p>
+                                </div>
+                            </div>
+                            <p class="mb-0 text-end">Shipping to Ukraine.</p>*@
+                        </div>
+                        <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                            <h5 class="mb-0 ps-4 me-4">Thành Tiền</h5>
+                            <p class="mb-0 pe-4">@string.Format("{0:#,0}",TongTien)</p>
+                        </div>
+                        <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Tiếp tục thanh toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Page End -->
+
