@@ -80,26 +80,22 @@
                                         <ul class="list-unstyled fruite-categorie">
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="~/Shop/XemTheoLoai?TenLoai=Apples"><i class="fas fa-apple-alt me-2"></i>Đồng Hồ Nam</a>
-                                                    <span>(3)</span>
+                                                    <a href="@Url.Action("Index", new { loai = "Man Watch" })"><i class="fas fa-apple-alt me-2"></i>Đồng Hồ Nam</a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="~/Shop/XemTheoLoai?TenLoai=Oranges"><i class="fas fa-apple-alt me-2"></i>Đồng Hồ Nữ</a>
-                                                    <span>(5)</span>
+                                                    <a href="@Url.Action("Index", new { loai = "Woman Watch" })"><i class="fas fa-apple-alt me-2"></i>Đồng Hồ Nữ</a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="~/Shop/XemTheoLoai?TenLoai=Strawbery"><i class="fas fa-apple-alt me-2"></i>Phụ Kiện</a>
-                                                    <span>(2)</span>
+                                                    <a href="@Url.Action("Index", new { loai = "PhuKien" })"><i class="fas fa-apple-alt me-2"></i>Phụ Kiện</a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="~/Shop/XemTheoLoai?TenLoai=Banana"><i class="fas fa-apple-alt me-2"></i>Seller</a>
-                                                    <span>(8)</span>
+                                                    <a href="@Url.Action("Index", new { loai = "Seller" })"><i class="fas fa-apple-alt me-2"></i>Seller</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -134,7 +130,7 @@
                                             <div class="fruite-img">
                                                 <a href="~/Detail/Index?id=@item.MASP"><img src="~/Public/img/@item.HINHLON" class="img-fluid w-100 rounded-top" alt="~/Public/img/@item.HINHLON"></a>
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.MALOAISP</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.LOAISANPHAM.TENLOAISP</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <a href="~/Detail/Index?id=@item.MASP"><h4>@item.TENSP</h4></a>
 
