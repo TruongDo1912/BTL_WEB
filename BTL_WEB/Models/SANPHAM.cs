@@ -17,7 +17,6 @@ namespace BTL_WEB.Models
         public SANPHAM()
         {
             this.CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
-            this.KHUYENMAIs = new HashSet<KHUYENMAI>();
         }
     
         public int MASP { get; set; }
@@ -30,9 +29,11 @@ namespace BTL_WEB.Models
         public Nullable<int> SOLUONG { get; set; }
         public string MALOAISP { get; set; }
         public Nullable<double> DONGIA { get; set; }
+        public Nullable<int> MAKM { get; set; }
+        public Nullable<double> GIASELLER { get; set; }
     
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
-        public virtual ICollection<KHUYENMAI> KHUYENMAIs { get; set; }
+        public virtual KHUYENMAI KHUYENMAI { get; set; }
         public virtual LOAISANPHAM LOAISANPHAM { get; set; }
         public virtual THUONGHIEU THUONGHIEU { get; set; }
     }

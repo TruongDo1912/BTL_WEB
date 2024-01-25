@@ -164,9 +164,11 @@
       <DependentUpon>WatchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\mapSanPham.cs" />
+    <Compile Include="Models\ProductCountViewModel.cs" />
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>WatchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StatisticalAccount.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>WatchModel.tt</DependentUpon>
     </Compile>
@@ -523,7 +525,6 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Testimonial\Index.cshtml" />
-    <Content Include="Views\Shop\XemTheoLoai.cshtml" />
     <Content Include="Views\Cart\ThongTinSanPham.cshtml" />
     <Content Include="Views\Cart\_SanPhamRow.cshtml" />
     <Content Include="Views\Cart\_LoadSanPhamRow.cshtml" />

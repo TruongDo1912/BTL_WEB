@@ -56,6 +56,14 @@
         });
         CartClass.Set(Cart);
         CartClass.ViewXemGioHang();
+        // Gọi hàm để cập nhật hiển thị số lượng trên trang Cart
+        CartClass.UpdateQuantityDisplay(id, soLuong);
+    },
+
+    // Thêm hàm để cập nhật hiển thị số lượng trên trang Cart
+    UpdateQuantityDisplay: function (id, soLuong) {
+        // Tìm và cập nhật số lượng trên trang Cart
+        // Code cập nhật hiển thị số lượng ở đây
     },
     IncreaseQuantity: function (id) {
         var Cart = CartClass.Get();

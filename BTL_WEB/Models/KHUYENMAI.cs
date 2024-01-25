@@ -14,10 +14,15 @@ namespace BTL_WEB.Models
     
     public partial class KHUYENMAI
     {
-        public string MAKM { get; set; }
-        public string TENKM { get; set; }
-        public Nullable<int> MASP { get; set; }
+        public KHUYENMAI()
+        {
+            this.SANPHAMs = new HashSet<SANPHAM>();
+        }
     
-        public virtual SANPHAM SANPHAM { get; set; }
+        public int MAKM { get; set; }
+        public string TENKM { get; set; }
+        public Nullable<double> PHAMTRAM { get; set; }
+    
+        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }
 }

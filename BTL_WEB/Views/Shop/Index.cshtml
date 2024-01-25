@@ -25,7 +25,7 @@
         </div>
         <div class="d-flex m-3 me-0">
             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-            <a href="#" class="position-relative me-4 my-auto">
+            <a href="~/Cart/Index" class="position-relative me-4 my-auto">
                 <i class="fa fa-shopping-bag fa-2x"></i>
                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
             </a>
@@ -65,7 +65,6 @@
                                 </form>
                             </div>
                         </div>
-
 
                         <div class="col-6"></div>
                         <div class="col-xl-3">
@@ -108,7 +107,7 @@
                                         <output id="amount" name="amount" min-velue="0" max-value="500" for="rangeInput">0</output>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-lg-12">
                                     <div class="position-relative">
                                         <img src="~/Public/img/Banner-1.jpg" class="img-fluid w-100 rounded" alt="">
@@ -128,20 +127,52 @@
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
-                                                <a href="~/Detail/Index?id=@item.MASP"><img src="~/Public/img/@item.HINHLON" class="img-fluid w-100 rounded-top" alt="~/Public/img/@item.HINHLON"></a>
+                                                <a href="~/Detail/Index?id=@item.MASP">
+                                                    <img src="~/Public/img/@item.HINHLON" class="img-fluid w-100 rounded-top" alt="~/Public/img/@item.HINHLON">
+                                                </a>
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.LOAISANPHAM.TENLOAISP</div>
+
+                                            @if (item.MALOAISP == "LP00003")
+                                            {
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">SALE @item.KHUYENMAI.PHAMTRAM%</div>
+                                            }
+
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <a href="~/Detail/Index?id=@item.MASP"><h4>@item.TENSP</h4></a>
+                                                <a href="~/Detail/Index?id=@item.MASP">
+                                                    <h4>@item.TENSP</h4>
+                                                </a>
 
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">@string.Format("{0:#,0}", @item.DONGIA) VND</p>
-                                                    <a href="javascripts:void(0)" onclick="CartClass.AddItem(@item.MASP,1)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">
+                                                            @if (item.MALOAISP == "LP00003")
+                                                            {
+                                                                <span style="text-decoration: line-through; color: darkgray;">
+                                                                    @string.Format("{0:#,0}", item.DONGIA)
+                                                                </span>
+
+                                                                if (item.KHUYENMAI != null && item.KHUYENMAI.PHAMTRAM.HasValue)
+                                                                {
+                                                                    <span style="margin-left:15px;">
+                                                                        @string.Format("{0:#,0}", item.DONGIA * (1 - item.KHUYENMAI.PHAMTRAM.Value / 100)) VND
+                                                                    </span>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>@string.Format("{0:#,0}", item.DONGIA) VND</span>
+                                                            }
+                                                    </p>
+
+                                                    <a href="javascript:void(0)" onclick="CartClass.AddItem(@item.MASP, 1)" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 }
+
                                 <div class="pagination d-flex justify-content-center mt-5">
                                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, keyword = Request.QueryString["keyword"] }))
                                 </div>
@@ -162,4 +193,3 @@
         }
     </div>
 </div>
-
