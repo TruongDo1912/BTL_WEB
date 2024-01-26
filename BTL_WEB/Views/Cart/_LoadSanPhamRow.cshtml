@@ -21,7 +21,8 @@
                         @foreach (var item in Model)
                         {
                             var sanPham = new BTL_WEB.Models.mapSanPham().ChiTiet(item.MASP);
-                            TongTien += item.SOLUONG * sanPham.DONGIA??0;
+                            var giaHienThi = item.SANPHAM.DONGIA ?? 0;
+                            TongTien += item.SOLUONG * giaHienThi ?? 0;
                             <tr class="row_@item.MASP">
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
@@ -32,7 +33,7 @@
                                     <p class="mb-0 mt-4">@sanPham.TENSP</p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">@string.Format("{0:#,0}", @sanPham.DONGIA)</p>
+                                    <p class="mb-0 mt-4">@string.Format("{0:#,0}", giaHienThi) VND</p>
                                 </td>
                                 <td>
                                     <div class="input-group quantity mt-4" style="width: 100px;">
@@ -51,7 +52,7 @@
 
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">@string.Format("{0:#,0}",item.SOLUONG * sanPham.DONGIA)</p>
+                                    <p class="mb-0 mt-4">@string.Format("{0:#,0}",item.SOLUONG * giaHienThi)</p>
                                 </td>
                                 <td>
                                     <button class="btn btn-md rounded-circle bg-light border mt-4" onclick="CartClass.Remove(@item.MASP)">

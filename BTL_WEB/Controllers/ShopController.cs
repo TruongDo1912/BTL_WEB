@@ -42,9 +42,6 @@ namespace BTL_WEB.Controllers
                     }
                 }
             }
-
-
-
             // Nếu có từ khóa tìm kiếm, lọc danh sách theo từ khóa
             if (!string.IsNullOrEmpty(keyword))
             {
