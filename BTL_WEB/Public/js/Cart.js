@@ -87,6 +87,7 @@
         CartClass.Set(Cart);
         CartClass.ViewXemGioHang();
     },
+
     ViewXemGioHang: function () {
         var cartItems = CartClass.Get();
         var newArray = [];
@@ -110,5 +111,24 @@
                 $("#cart-view").append(data);
             }
         });
+
     }
 }
+
+    $(document).ready(function () {
+        const dataFromLocalStorage = JSON.parse(localStorage.getItem('arrIDSP'));
+        console.log('Data', dataFromLocalStorage);
+        $.ajax({
+            url: 'Checkout',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(dataFromLocalStorage),
+            success: function (result) {
+                // Xử lý kết quả nếu cần
+                console.log(result);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    });

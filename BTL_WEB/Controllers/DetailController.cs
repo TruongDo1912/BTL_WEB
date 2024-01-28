@@ -9,7 +9,8 @@ namespace BTL_WEB.Controllers
 {
     public class DetailController : Controller
     {
-        BANDONGHOEntities db = new BANDONGHOEntities();
+        private BANDONGHOEntities db = new BANDONGHOEntities();
+
         // GET: Detail
         public ActionResult Index(int id)
         {
@@ -37,6 +38,12 @@ namespace BTL_WEB.Controllers
             }
 
             ViewBag.GiaHienThi = giaHienThi;
+            var sanPhamLienQuan = db.SANPHAMs
+            .Where(sp => sp.LOAISANPHAM.TENLOAISP == ketQua.LOAISANPHAM.TENLOAISP && sp.MASP != id)
+            .Take(5)
+            .ToList();
+
+            ViewBag.SanPhamLienQuan = sanPhamLienQuan;
 
             return View(ketQua);
         }

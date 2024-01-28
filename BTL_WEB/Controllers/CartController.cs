@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BTL_WEB.Models;
+using Newtonsoft.Json;
 namespace BTL_WEB.Controllers
 {
     public class CartController : Controller
@@ -12,6 +13,7 @@ namespace BTL_WEB.Controllers
         // GET: Cart
         public ActionResult Index(List<CHITIETDONHANG> sanPhams)
         {
+            Session["CartItems"] = sanPhams;
             return View(sanPhams);
         }
         [HttpPost]
@@ -48,13 +50,6 @@ namespace BTL_WEB.Controllers
             }
 
             return PartialView("_LoadSanPhamRow", sanPhams);
-        }
-
-
-        public ActionResult ThongTinSanPham(int idSanPham, int SoLuong)
-        {
-            ViewBag.SoLuong = SoLuong;
-            return PartialView("_SanPhamRow", new mapSanPham().ChiTiet(idSanPham));
         }
 
     }

@@ -373,144 +373,48 @@
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="text-center mx-auto mb-5" style="max-width: 700px;">
-            <h1 class="display-4">Các Sản Phẩm Bán Chạy</h1>
+            <h1 class="display-4">Sản Phẩm Giảm Giá</h1>
         </div>
         <div class="row g-4">
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="~/Public/img/bestsl-1.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">BELLINI</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
+            @foreach (var sanPham in Model.Where(sp => sp.MALOAISP == "LP00003"))
+            {
+                <div class="col-lg-6 col-xl-4">
+                    <div class="p-4 rounded bg-light">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <a href="~/Detail/Index?id=@sanPham.MASP">
+                                    <img src="~/Public/img/@sanPham.HINHLON" class="img-fluid rounded-circle w-100" alt="">
+                                    </a>
                             </div>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: #b4aaaa; text-decoration: line-through;">1.190.000 VND</p>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: black; margin-top: -10px;">890.000 VND</p>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                            <div class="col-6">
+                                <a href="#" class="h5">@sanPham.TENSP</a>
+                                <div class="d-flex my-3">
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                    <i class="fas fa-star text-primary"></i>
+                                </div>
+
+                                <p class="price" style="font-size: 15px; font-weight: bold; color: #b4aaaa; text-decoration: line-through;">
+                                    @string.Format("{0:#,0}", sanPham.DONGIA) VND
+                                </p>
+                                <p class="price" style="font-size: 15px; font-weight: bold; color: black; margin-top: -10px;">
+                                    @string.Format("{0:#,0}", sanPham.DONGIA * (1 - sanPham.KHUYENMAI.PHAMTRAM.Value / 100)) VND
+                                </p>
+
+                                <a href="javascript:void(0)" onclick="CartClass.AddItem(@sanPham.MASP, 1)" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="~/Public/img/bestsl-2.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">MORGANITE</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: #b4aaaa; text-decoration: line-through;">1.190.000 VND</p>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: black; margin-top: -10px;">890.000 VND</p>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="~/Public/img/bestsl-3.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">WIND</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: #b4aaaa; text-decoration: line-through;">1.435.000 VND</p>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: black; margin-top: -10px;">678.000 VND</p>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="~/Public/img/bestsl-4.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">CHARM</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: #b4aaaa; text-decoration: line-through;">899.000 VND</p>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: black; margin-top: -10px;">499.000 VND</p>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="~/Public/img/bestsl-5.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">EMANUEL</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: #b4aaaa; text-decoration: line-through;">2.190.000 VND</p>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: black; margin-top: -10px;">699.000 VND</p>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="~/Public/img/bestsl-6.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">GARI</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: #b4aaaa; text-decoration: line-through;">1.190.000 VND</p>
-                            <p class="price" style="font-size: 15px; font-weight: bold; color: black; margin-top: -10px;">890.000 VND</p>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
+
 <!-- Bestsaler Product End -->
 <!-- Tastimonial Start -->
 <div class="container-fluid testimonial py-5">

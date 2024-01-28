@@ -144,23 +144,23 @@
                                                 </a>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                     <p class="text-dark fs-5 fw-bold mb-0">
-                                                            @if (item.MALOAISP == "LP00003")
-                                                            {
-                                                                <span style="text-decoration: line-through; color: darkgray;">
-                                                                    @string.Format("{0:#,0}", item.DONGIA)
-                                                                </span>
+                                                        @if (item.MALOAISP == "LP00003")
+                                                        {
+                                                            <span style="text-decoration: line-through; color: darkgray;">
+                                                                @string.Format("{0:#,0}", item.DONGIA)
+                                                            </span>
 
-                                                                if (item.KHUYENMAI != null && item.KHUYENMAI.PHAMTRAM.HasValue)
-                                                                {
-                                                                    <span style="margin-left:15px;">
-                                                                        @string.Format("{0:#,0}", item.DONGIA * (1 - item.KHUYENMAI.PHAMTRAM.Value / 100)) VND
-                                                                    </span>
-                                                                }
-                                                            }
-                                                            else
+                                                            if (item.KHUYENMAI != null && item.KHUYENMAI.PHAMTRAM.HasValue)
                                                             {
-                                                                <span>@string.Format("{0:#,0}", item.DONGIA) VND</span>
+                                                                <span style="margin-left:15px;">
+                                                                    @string.Format("{0:#,0}", item.DONGIA * (1 - item.KHUYENMAI.PHAMTRAM.Value / 100)) VND
+                                                                </span>
                                                             }
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>@string.Format("{0:#,0}", item.DONGIA) VND</span>
+                                                        }
                                                     </p>
                                                     <a href="javascript:void(0)" onclick="CartClass.AddItem(@item.MASP, 1)" class="btn border border-secondary rounded-pill px-3 text-primary">
                                                         <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart

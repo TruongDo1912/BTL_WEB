@@ -136,9 +136,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Areas\AreasAreaRegistration.cs" />
+    <Compile Include="Areas\Areas\Controllers\LoginController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -163,8 +166,10 @@
     <Compile Include="Models\LOAITK.cs">
       <DependentUpon>WatchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LocalStorageItem.cs" />
     <Compile Include="Models\mapSanPham.cs" />
     <Compile Include="Models\ProductCountViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>WatchModel.tt</DependentUpon>
     </Compile>
@@ -475,6 +480,8 @@
     <Content Include="Models\WatchModel.edmx.diagram">
       <DependentUpon>WatchModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Areas\Views\web.config" />
+    <Content Include="Areas\Areas\Views\Login\Login.cshtml" />
     <None Include="bin\BTL_WEB.dll.config" />
     <Content Include="bin\roslyn\csc.exe.config" />
     <Content Include="bin\roslyn\csc.rsp" />
@@ -525,12 +532,13 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Testimonial\Index.cshtml" />
-    <Content Include="Views\Cart\ThongTinSanPham.cshtml" />
-    <Content Include="Views\Cart\_SanPhamRow.cshtml" />
     <Content Include="Views\Cart\_LoadSanPhamRow.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Areas\Data\" />
+    <Folder Include="Areas\Areas\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
